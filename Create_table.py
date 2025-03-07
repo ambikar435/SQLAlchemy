@@ -21,4 +21,5 @@ with engine.connect() as connection:
     print(tables_details)
     describe_persons = connection.execute(text("describe persons;")).fetchall()
     print(describe_persons)
+    connection.commit()
 print("The data base creation is done")

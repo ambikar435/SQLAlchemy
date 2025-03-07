@@ -31,3 +31,16 @@ with engine.connect() as connection:
 ---------- Persons.insert().values((data shoud be with list or tuple or dict))
 INSERT multiple rows of DATA INTO DATABASE TABLE 
 ---------connection.execute(persons.insert(),[list of inserted data])
+
+UNIQUE CONSTRAINS AND NOT NULL CONSTRAINS
+--------------users = Table("users", metadata, 
+              Column('user_id', Integer, nullable=False),
+              Column('first_name', String(255), nullable=False),
+              Column('last_name', String(255)),
+              Column('email_id', String(255)),
+              Column('city', String(255)),
+              Column('phone', String(255), nullable=False),
+              UniqueConstraint('user_id'))
+
+PRIMARY CONSTRAINS:
+
