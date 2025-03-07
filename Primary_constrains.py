@@ -52,9 +52,8 @@ with engine_with_db.connect() as connection:
         {'user_id': 3, 'first_name': "Charan", 'last_name': "LR", 'email_id': "charan@gmail.com", 'city': "Kolar", 'phone': "0987654321"},
         {'user_id': 4, 'first_name': "Chandu", 'last_name': "LR", 'email_id': "chandu@gmail.com", 'city': "Mangalore", 'phone': "67890123456"}
     ])
-    unique_id_error = {'first_name': "Chandu", 'last_name': "LR", 'email_id': "chandu@gmail.com", 'city': "Mangalore", 'phone': "67890123456"}
-    connection.execute(users.insert().values(unique_id_error)) # this will raise the unique constrain erroe because user_id 4 is already inserted
-    #output= (1062, "Duplicate entry '4' for key 'users.user_id'")
+    try_autoincrement = {'first_name': "Chandu", 'last_name': "LR", 'email_id': "chandu@gmail.com", 'city': "Mangalore", 'phone': "67890123456"}
+    connection.execute(users.insert().values(try_autoincrement)) # even though we didn't insert user_id it will not through error because we set autoincrement=True
     """
     null_value_error = {'user_id': 5, 'first_name': "Chandu", 'last_name': "LR", 'email_id': "chandu@gmail.com", 'city': "Mangalore", 'phone': None}
     connection.execute(users.insert().values(null_value_error)) # this will raise the value error because we are not passing value for nonnull keys
